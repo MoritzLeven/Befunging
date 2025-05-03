@@ -1,0 +1,111 @@
+v (include everything, also this line of the) Turing Machine (documentation below)
+v
+v
+v
+v
+
+# q0    # q1     # q2
+0101011f  1020101 00020000 $
+v actual code starts below this line
+v
+v initialization                                                                 v<<<<<<<<<<<$<
+v pointers                 states (convert ascii to dec excluding space)    v +1 < p7g24-"0" _^#-" ":<
+> 012p 122p 032p "$"62p >> 0                                                >:42p:7g:62g-           #^_$$v                              
+v                                                                                                        v
+v<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+v                                                                                                                                                         ^
+v                                                                                                                                                         ^
+v      do stuff for 32 >>>>>>>>>>>>>   11g51p v                                                                                                           ^
+v      (first copy of instructions)^ v        <                                                                                                           ^
+v      (by overriding second copy) ^ > 21g61p v                                                                                                           ^
+v   v +1:<  <                      ^ v        <                                                                                                           ^
+v         v ^-1p1g25g7+<           ^ > 31g71p v                                                                                                           ^
+v   >   #7v >::1+52p42g^           ^ v        <                                                                                                           ^
+>32g9*42p^> |                      ^ > 41g81p v                                                                                                           ^
+            >$>>>>>>>>>>>12g422g+g |          v                                                                                                           ^
+read state               read tape v          v                                                     >>12g+12p              v                              ^
+                                   v          v                           increase head pos > 22g:1+|^     <               v                              ^
+                                   v          v                                             ^       >12g1- |               v                              ^
+                                   v          v                                             ^              >$012p122p      v                              ^
+      do stuff for zero >>>>>>>>>>>>>>>>>>>>>>>> 51g12g422g+p >>> 61g                       |                              >> 71g      #@_>> 81g32p      >^       
+      (second copy of instructions)              write tape    read direction and move head v                              ^  check halt   set new state
+                                                                                            v                              ^             
+                                                                                            v       >42p12g42g-12p         ^             
+                                                                          decrease head pos > 22g:1-|    >$42p12g42g-12p   ^             
+                                                                                                    >12g:|                 ^             
+                                                                                                         >1-22p112p$       ^             
+                                                                                                                                   
+
+  
+
+
+-- organization
+-- y,x:012345678
+-- 0  :v (include everything, also this line of the) Turing Machine (documentation below)
+-- 1  : wdhpwdhp
+-- 2  : xsqij$
+-- 3  : negative tape
+-- 4  :
+-- 5  :positive tape
+-- 6  :# <- not needed if first state starts with blank
+-- 7  :instructions of all states wpdhwpdh wpdhwpdh … (currently busy Beaver with 3 states) .. end with $
+-- 8  : actual code starts below this line
+
+
+-- idea: have two pointers which operate the tape
+-- the tape is divided in two, one for pos -inf to -1, one for pos 0 to +inf 
+-- the first pointer x captures the absolute value of the Position
+-- the second pointer s captures whether the current Position is negative where s in {-1,1}, the negative tape is at y = 3 and the positive tape is at y = 5
+-- thus the current tape Always is at y = 4 + s
+-- the tape alphabet is {32, 0}, mainly because 32 is the Standard value and branching on 32 vs 0 is easy
+
+-- Portion of code that reads the current tape Position, given that x is at 1 2 and s is at 2 2
+12g422g+g
+
+-- Portion of code that increases the current tape Position
+-- this amounts to first Checking whether s+1 = 0 or whether s>0
+-- if this is not the case, just add one, i.e., add s
+-- otherwise, subtract one, i.e., add s
+-- if x is now negative (has been Zero before), negate x, i.e., multiply by s and do the same for s
+
+      >>12g+12p       v
+22g:1+|^   <
+      >12g:|
+           >$112p:*22p>
+
+-- Portion of code that decreases the current tape Position
+-- this amounts to first Checking whether s-1 = 0 or whether s<0
+-- if this is not the case, just subtract one, i.e., add s
+-- otherwise, add one, i.e., add s
+-- if x is now zero, negate s
+
+      >12g->12p       v
+22g:1-|         >     v
+      >:12g-:12p|     $
+                >:*22p>
+
+
+
+-- have a third pointer q at 3 2 that holds the current states
+-- all states are at y = 7 and consist of these values:
+-- w: what two write to the tape (either 32 or 0)
+-- d: the direction in which to move the head (either 0 for decrease or 1 for increase)
+-- h: whether to halt
+-- p: the next state (some natural number)
+-- a copy of these values for the case that 0 is currently on the tape
+-- for readability we conclude each state with a blank
+
+-- Portion of code that reads the current state q
+-- 1) read q and store 9q in i (each state has 8 values + 1 blank)
+-- 2) iterate over all 8 values and store them to line 1
+
+         v  -1p1g25g7+<
+           >::1+52p42g^
+32g9*42p7>:|
+           >$
+
+
+
+
+
+
