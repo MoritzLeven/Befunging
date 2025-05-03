@@ -5,3 +5,4 @@ Make sure you view program files using a monospace font, otherwise Befunge progr
 # Plans for the future
 - deterministic Turing-Machine
 - probabilistic choice with arbitrary rational probability
+- maybe some useful stuff like probabilistic quicksort ...
