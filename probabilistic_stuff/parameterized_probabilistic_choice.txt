@@ -1,0 +1,35 @@
+v
+v<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< _@# p05 : -1 g05 <<
+vndpfs                                                                                                                        ^
+v                   v<<<<< +: g03 < -- d > p: double p                                                                        ^
+v                   v             ^      load p/2 and check whether it is Zero                                                ^
+v                   v             ^      |                leave k as is                                                       ^
+v> 57 >> 20p 10p 1 >>: 30p 20g \` |      |                |                                                                   ^
+"p                                v    v<|#<<<<<<<<<<<<<<<<<<<<<<<<                                                           ^
+>6                                v    v v            > #v?^      +                                                           ^
+E0                         d <= p v>>0 > 30g 2 / : 30p|  >>>> 30g ^                    >>>>>>>>>>>>>>>>>>>>>>>> "t", >>>>>>>>>^
+0p                                3p^k                v   ^                            ^   top path                           ^
+"0                                00^                 v   |                            ^                                      ^
+-5                                g4^                 v   add p/2 to k                 ^                                      ^
+>^                                >^^                 v                                ^          bottom path                 ^
+   all iterations complete, now check the three cases >>>>>>>>>>>>>>>>>>>>>> : 10g \ ` |         >>>>>>>>>>>>>> "b", >>>>>>>>>^
+                                    #                                                  > 20g \ ` |
+                                    ^<p03g04<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+-- organization of pointers:
+y, x:01234
+0   :vndp
+
+-- idea: Pop two values n and d off the stack (e.g. here n=5 and d=7)
+--       with probability n/d go to the top path
+--       with probability (d-n)/d go to the Bottom path
+-- for this Purpose:
+-- compute the smallest Exponent t for a power of 2 such that d <= p=2^t
+-- do t choices with probability 1/2 and track the Position k in the corresponding tree implicitly
+-- i.e., in the i-th (1<=i) Iteration we have 0 <= k < 2^i
+-- afterwards, if k < n go to the top path
+-- otherwise, if k < d go to the Bottom path
+-- otherwise, repeat the sampling iterations
+
+-- we repeat this choice "E", i.e., 21 times
