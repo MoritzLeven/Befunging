@@ -1,5 +1,5 @@
 # Befunging
-Some (probabilistic) programs in [Befunge-98](https://esolangs.org/wiki/Befunge){:target="_blank"} (use, e.g., this [interpreter](https://purkka.codes/jsfunge-98/befunge98.html){:target="_blank"} to execute the programs).
+Some (probabilistic) programs in <a href="https://esolangs.org/wiki/Befunge" target="_blank">Befunge-98</a> (use, e.g., this <a href="https://purkka.codes/jsfunge-98/befunge98.html" target="_blank">interpreter</a> to execute the programs).
 Make sure you view program files using a monospace font, otherwise Befunge programs are hard to read ...
 
 # Plans for the future
